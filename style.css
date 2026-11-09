@@ -1,0 +1,308 @@
+
+/* ========================================
+   1. FONT & GLOBAL STYLES
+======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+body {
+    text-align: center;
+    background-color: #F4E6F6;
+    color: #704D39;
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+h1 {
+    color: #704D39;
+    font-size: 54px;
+    margin-bottom: 5px;
+}
+
+p {
+    font-size: 30px;
+    margin-top: 0;
+}
+
+img {
+    display: block;
+    width: 360px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+
+/* ========================================
+   2. BUTTONS
+======================================== */
+
+button {
+    display: block;
+    margin: 20px auto;
+    font-family: inherit;
+    font-size: 30px;
+    background-color: #704D39;
+    color: white;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 10px 22px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ffa5c3;
+}
+
+
+/* ========================================
+   3. SCREEN VISIBILITY
+======================================== */
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ========================================
+   4. FORTUNE CARD
+======================================== */
+
+/* Fortune Card Container */
+#fortuneCard {
+    position: relative;
+    width: 600px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+/* Bow Frame Image */
+#fortuneCard > img:first-child {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+/* Candy Illustration */
+#candyResult {
+    position: absolute;
+    width: 750px;
+    max-width: 120%;
+    height: auto;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+/* Fortune Text */
+#fortuneResult {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    width: 65%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 32px;
+    line-height: 1.1;
+    text-align: center;
+    color: #704D39;
+}
+
+
+/* ========================================
+   5. ANIMATIONS
+======================================== */
+
+/* Fortune Card Reveal */
+#resultScreen:not([hidden]) #fortuneCard {
+    animation: cardAppear 0.6s ease-out;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Candy Machine Shake */
+#startScreen img.shaking {
+    animation: machineShake 0.6s ease-in-out;
+}
+
+@keyframes machineShake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+
+    75% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+/* ========================================
+   6. MOBILE LAYOUT
+   Screens 600px and below
+======================================== */
+
+@media (max-width: 600px) {
+
+    /* Page Layout */
+    body {
+        min-height: 100dvh;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 20px 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 38px;
+        line-height: 1.1;
+        margin-bottom: 8px;
+    }
+
+    body > p {
+        font-size: 28px;
+        margin-top: 0;
+        margin-bottom: 24px;
+    }
+
+    /* Consistent Screen Layout */
+    #startScreen,
+    #resultScreen {
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) auto;
+        height: clamp(380px, 125vw, 490px);
+        justify-items: center;
+        align-items: center;
+    }
+
+    /* Candy Machine */
+    #startScreen > img {
+        width: auto;
+        max-width: 85%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+    /* Fortune Card */
+    #fortuneCard {
+        width: 360px;
+        max-width: 85%;
+        align-self: center;
+    }
+
+    /* Candy Illustration */
+    #candyResult {
+        width: 100%;
+        max-width: none;
+    }
+
+    /* Fortune Text */
+    #fortuneResult {
+        top: auto;
+        bottom: 13%;
+        left: 50%;
+        width: 82%;
+        transform: translateX(-50%);
+        font-size: 22px;
+        line-height: 1.1;
+    }
+
+    /* Buttons */
+    #startScreen > button,
+    #resultScreen > button {
+        margin: 10px auto 0;
+    }
+}
+
+
+/* ========================================
+   7. DESKTOP LAYOUT
+   Screens 601px and above
+======================================== */
+
+@media (min-width: 601px) {
+
+    /* Page Layout */
+    body {
+        min-height: 100dvh;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Typography */
+    h1 {
+        margin: 0 0 4px;
+    }
+
+    body > p {
+        margin: 0 0 12px;
+    }
+
+    /* Consistent Screen Layout */
+    #startScreen,
+    #resultScreen {
+        width: 100%;
+        height: min(660px, 72dvh);
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) auto;
+        justify-items: center;
+        align-items: center;
+    }
+
+    /* Candy Machine */
+    #startScreen > img {
+        width: auto;
+        max-width: 90%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+    /* Bow Frame */
+    #fortuneCard {
+        width: min(480px, 45dvh);
+        max-width: 90%;
+    }
+
+    /* Fortune Text */
+    #fortuneResult {
+        top: 68%;
+        width: 74%;
+        font-size: 30px;
+    }
+
+    /* Buttons */
+    #startScreen > button,
+    #resultScreen > button {
+        margin: 8px auto 0;
+    }
+}

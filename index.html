@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A little lucky machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>A little lucky machine</h1>
+    <p>Pick a candy, find your fortune</p>
+
+    <!-- Screen 1: Candy Machine -->
+    <section id="startScreen">
+        <img src="images/candy_machine.png"
+             alt="A pink candy machine">
+
+        <button id="luckButton">Try your luck!</button>
+    </section>
+
+    <!-- Screen 2: Fortune Result -->
+    <section id="resultScreen" hidden>
+        <div id="fortuneCard">
+            <img src="images/bow_frame.png"
+                 alt="Fortune card frame">
+
+            <img id="candyResult"
+                 alt="Your lucky candy"
+                 hidden>
+
+            <p id="fortuneResult"></p>
+        </div>
+
+        <button id="tryAgainButton">Try Again ♡</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
